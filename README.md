@@ -1,2 +1,5 @@
 # forex-app
-A forex web app, showing up to date forex values between most world currencies and some commodities.
+A forex web app build in Angular and Typescript. 
+Showing up to date forex values between most world currencies and some commodities.
+
+APIs used: https://www.alphavantage.co, https://openexchangerates.org/
