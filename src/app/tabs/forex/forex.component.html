@@ -1,0 +1,38 @@
+<div class="tab">
+  <h1>Easy forex Calculator</h1>
+  <div class="main-tab">
+    <form novalidate [formGroup]="forexForm">
+        <mat-form-field class="select-menu" appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input matInput class="" id="amountInput" type="number" formControlName="amount" />
+          </mat-form-field>
+      <mat-form-field class="select-menu" appearance="outline">
+          <mat-label>From</mat-label>
+      <select matNativeControl id="fromInput" formControlName="fromCurrency">
+          <option [ngValue]="null">Select Currency</option>
+          <option *ngFor="let currency of currencies">
+              {{currency}}
+            </option>
+      </select>
+      </mat-form-field>
+      <button class="change-menu" mat-button (click)="change()"> 
+          <mat-icon aria-hidden="false" aria-label="chevron-right"> <i class="fas fa-exchange-alt"></i> </mat-icon>
+      </button> 
+      <mat-form-field class="select-menu" appearance="outline">
+          <mat-label>To</mat-label>
+          <select matNativeControl id="toInput" formControlName="toCurrency">
+              <option [ngValue]="null">Select Currency</option>
+              <option *ngFor="let currency of currencies">
+                  {{currency}}
+                </option>
+          </select>
+      </mat-form-field>     
+      <button class="convert-menu" mat-stroked-button [disabled]="!forexForm.valid" (click)="convert()"> 
+          <mat-icon aria-hidden="false" aria-label="chevron-right"> <i class="fas fa-chevron-right"></i> </mat-icon>    
+      </button>
+    </form>
+  </div>
+  <div *ngIf="result" class="result">
+    {{resultMsg}}
+  </div>
+</div>
