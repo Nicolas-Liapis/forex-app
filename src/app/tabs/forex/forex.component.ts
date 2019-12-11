@@ -8,11 +8,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./forex.component.scss']
 })
 export class ForexComponent implements OnInit {
+
   forexForm: FormGroup;
   currencies: any = [];
   result: any;
   resultMsg: any;
   loading: boolean;
+  reload: boolean;
+
+  from: string;
+  to: string;
 
   constructor(private currencyService: CurrencyService,
               private fb: FormBuilder) {}
@@ -41,8 +46,11 @@ export class ForexComponent implements OnInit {
   convert() {
     this.loading = true;
     this.resultMsg = null;
+    this.reload = false;
     const from = this.forexForm.get('fromCurrency').value.split(',')[0];
+    this.from = from;
     const to = this.forexForm.get('toCurrency').value.split(',')[0];
+    this.to = to;
     let amountInput = this.forexForm.get('amount').value;
     if (amountInput < 0) {
       amountInput *= -1;
@@ -50,14 +58,13 @@ export class ForexComponent implements OnInit {
         amount: amountInput
       });
     }
-    const value = 'Realtime Currency Exchange Rate';
-    const res = this.currencyService.getFx(from, to);
     let ex;
-    res.subscribe(data => {
-      this.result = data[value];
+    this.currencyService.getFx(from, to).subscribe(data => {
+      this.result = data['Realtime Currency Exchange Rate'];
       ex = this.result['5. Exchange Rate'];
       const calcResult = Math.round((Number(amountInput) * Number(ex)) * 100) / 100;
       this.resultMsg = `${amountInput} ${from} = ${calcResult} ${to}`;
+      this.reload = true;
     });
   }
 
@@ -67,4 +74,5 @@ export class ForexComponent implements OnInit {
       toCurrency: this.forexForm.get('fromCurrency').value
     });
   }
+
 }

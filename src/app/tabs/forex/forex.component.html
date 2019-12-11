@@ -36,4 +36,7 @@
     <mat-spinner *ngIf="!resultMsg"></mat-spinner>
     {{resultMsg}}
   </div>
+  <div *ngIf="loading" class="result">
+    <app-chart *ngIf="reload" [from]="from" [to]="to"></app-chart>
+  </div>
 </div>

@@ -1,18 +1,7 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  HttpClient
-} from '@angular/common/http';
-import {
-  Observable
-} from 'rxjs';
-import {
-  map,
-  publishReplay,
-  refCount
-} from 'rxjs/operators';
-
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { publishReplay, refCount } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

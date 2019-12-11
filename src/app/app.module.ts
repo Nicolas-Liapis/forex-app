@@ -9,11 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
 import { CurrencyService } from './services/currency.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartService } from './services/chart.service';
+import { ChartComponent } from './tabs/forex/chart/chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ForexComponent
+    ForexComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [CurrencyService],
+  providers: [CurrencyService, ChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

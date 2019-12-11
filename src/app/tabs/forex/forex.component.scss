@@ -1,5 +1,4 @@
 .tab {
-    margin-top: 5em;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -26,7 +25,6 @@
         margin-left: 1em;
 
         @media screen and (max-width: 450px) {
-            width: 100%;
             margin: 0;
           }
     }
@@ -75,8 +73,14 @@
     font-weight: 400;
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    app-chart {
+        width: 100%;
+        height: auto;
+    }
 
     @media screen and (max-width: 450px) {
         width: auto;
