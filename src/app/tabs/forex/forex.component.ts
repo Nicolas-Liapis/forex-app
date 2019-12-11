@@ -43,9 +43,12 @@ export class ForexComponent implements OnInit {
     this.resultMsg = null;
     const from = this.forexForm.get('fromCurrency').value.split(',')[0];
     const to = this.forexForm.get('toCurrency').value.split(',')[0];
-    let amount = this.forexForm.get('amount').value;
-    if (amount < 0) {
-      amount *= -1;
+    let amountInput = this.forexForm.get('amount').value;
+    if (amountInput < 0) {
+      amountInput *= -1;
+      this.forexForm.patchValue({
+        amount: amountInput
+      });
     }
     const value = 'Realtime Currency Exchange Rate';
     const res = this.currencyService.getFx(from, to);
@@ -53,8 +56,8 @@ export class ForexComponent implements OnInit {
     res.subscribe(data => {
       this.result = data[value];
       ex = this.result['5. Exchange Rate'];
-      const calcResult = Math.round((Number(amount) * Number(ex)) * 100) / 100;
-      this.resultMsg = `${amount} ${from} = ${calcResult} ${to}`;
+      const calcResult = Math.round((Number(amountInput) * Number(ex)) * 100) / 100;
+      this.resultMsg = `${amountInput} ${from} = ${calcResult} ${to}`;
     });
   }
 
