@@ -32,7 +32,8 @@
       </button>
     </form>
   </div>
-  <div *ngIf="result" class="result">
+  <div *ngIf="loading" class="result">
+    <mat-spinner *ngIf="!resultMsg"></mat-spinner>
     {{resultMsg}}
   </div>
 </div>

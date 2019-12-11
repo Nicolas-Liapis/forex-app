@@ -12,6 +12,7 @@ export class ForexComponent implements OnInit {
   currencies: any = [];
   result: any;
   resultMsg: any;
+  loading: boolean;
 
   constructor(private currencyService: CurrencyService,
               private fb: FormBuilder) {}
@@ -23,6 +24,7 @@ export class ForexComponent implements OnInit {
       fromCurrency: ['', [Validators.required]],
       toCurrency: ['', [Validators.required]]
     });
+    this.loading = false;
   }
 
   getCurrencies() {
@@ -37,6 +39,8 @@ export class ForexComponent implements OnInit {
   }
 
   convert() {
+    this.loading = true;
+    this.resultMsg = null;
     const from = this.forexForm.get('fromCurrency').value.split(',')[0];
     const to = this.forexForm.get('toCurrency').value.split(',')[0];
     let amount = this.forexForm.get('amount').value;
@@ -49,7 +53,7 @@ export class ForexComponent implements OnInit {
     res.subscribe(data => {
       this.result = data[value];
       ex = this.result['5. Exchange Rate'];
-      const calcResult = Number(amount) * Number(ex);
+      const calcResult = Math.round((Number(amount) * Number(ex)) * 100) / 100;
       this.resultMsg = `${amount} ${from} = ${calcResult} ${to}`;
     });
   }
