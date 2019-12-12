@@ -32,14 +32,14 @@ export class ChartComponent implements OnInit {
       for (const i in x) {
         dataArr.push([i, x[i]]);
       }
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 30; i++) {
         yAxis.push(Number(dataArr[i][1]['4. close']));
       }
-      for (let i = 20; i > 0; i--) {
+      for (let i = 30; i > 0; i--) {
         xAxis.push(dataArr[i][0]);
       }
       const datapoints = [];
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 30; i++) {
         datapoints[i] = { y: yAxis[i], label: xAxis[i]};
       }
       this.datapoints = datapoints;
