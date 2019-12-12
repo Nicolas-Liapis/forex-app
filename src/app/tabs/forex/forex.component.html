@@ -4,7 +4,7 @@
     <form novalidate [formGroup]="forexForm">
         <mat-form-field class="select-menu" appearance="outline">
             <mat-label>Amount</mat-label>
-            <input matInput class="" id="amountInput" type="number" formControlName="amount" />
+            <input #amount matInput class="" (blur)="validateAmount(amount.value)" id="amountInput" type="number" formControlName="amount" />
           </mat-form-field>
       <mat-form-field class="select-menu" appearance="outline">
           <mat-label>From</mat-label>

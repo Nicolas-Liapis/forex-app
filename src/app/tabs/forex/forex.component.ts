@@ -25,7 +25,7 @@ export class ForexComponent implements OnInit {
   ngOnInit() {
     this.getCurrencies();
     this.forexForm = this.fb.group({
-      amount: ['1', [Validators.required, Validators.minLength(1)]],
+      amount: ['1', [Validators.required, Validators.minLength(1), Validators.min(0)]],
       fromCurrency: ['', [Validators.required]],
       toCurrency: ['', [Validators.required]]
     });
@@ -47,25 +47,25 @@ export class ForexComponent implements OnInit {
     this.loading = true;
     this.resultMsg = null;
     this.reload = false;
-    const from = this.forexForm.get('fromCurrency').value.split(',')[0];
-    this.from = from;
-    const to = this.forexForm.get('toCurrency').value.split(',')[0];
-    this.to = to;
-    let amountInput = this.forexForm.get('amount').value;
-    if (amountInput < 0) {
-      amountInput *= -1;
-      this.forexForm.patchValue({
-        amount: amountInput
-      });
-    }
-    let ex;
-    this.currencyService.getFx(from, to).subscribe(data => {
+    this.from = this.forexForm.get('fromCurrency').value.split(',')[0];
+    this.to = this.forexForm.get('toCurrency').value.split(',')[0];
+    const amountInput = this.forexForm.get('amount').value;
+    this.currencyService.getFx(this.from,this.to).subscribe(data => {
       this.result = data['Realtime Currency Exchange Rate'];
-      ex = this.result['5. Exchange Rate'];
+      const ex = this.result['5. Exchange Rate'];
       const calcResult = Math.round((Number(amountInput) * Number(ex)) * 100) / 100;
-      this.resultMsg = `${amountInput} ${from} = ${calcResult} ${to}`;
+      this.resultMsg = `${amountInput} ${this.from} = ${calcResult} ${this.to}`;
       this.reload = true;
     });
+  }
+
+  validateAmount(value) {
+    if (value < 0) {
+      value *= -1;
+      this.forexForm.patchValue({
+        amount: value
+      });
+    }
   }
 
   change() {
