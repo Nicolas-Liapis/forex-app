@@ -11,12 +11,16 @@ import { CurrencyService } from './services/currency.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartService } from './services/chart.service';
 import { ChartComponent } from './tabs/forex/chart/chart.component';
+import { TopNavComponent } from './tabs/top-nav/top-nav.component';
+import { NotReadyComponent } from './tabs/not-ready/not-ready.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ForexComponent,
-    ChartComponent
+    ChartComponent,
+    TopNavComponent,
+    NotReadyComponent
   ],
   imports: [
     BrowserModule,
