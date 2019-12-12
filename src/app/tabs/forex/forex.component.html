@@ -31,11 +31,11 @@
       </button>
     </form>
   </div>
-  <div *ngIf="loading" class="result">
-    <mat-spinner *ngIf="!resultMsg"></mat-spinner>
-    {{resultMsg}}
+  <div class="result">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <span *ngIf="resultMsg">{{resultMsg}}</span>
   </div>
-  <div *ngIf="loading" class="result">
+  <div *ngIf="resultMsg" class="chart">
     <app-chart *ngIf="reload" [from]="from" [to]="to"></app-chart>
   </div>
 </div>

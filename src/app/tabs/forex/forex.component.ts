@@ -56,6 +56,7 @@ export class ForexComponent implements OnInit {
       const calcResult = Math.round((Number(amountInput) * Number(ex)) * 100) / 100;
       this.resultMsg = `${amountInput} ${this.from} = ${calcResult} ${this.to}`;
       this.reload = true;
+      this.loading = false;
     });
   }
 

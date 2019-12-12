@@ -13,10 +13,12 @@ export class ChartComponent implements OnInit {
   @Input() to: any;
 
   datapoints = [];
+  loading: boolean;
 
   constructor(private chartService: ChartService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.getChartData();
   }
 
@@ -58,5 +60,6 @@ export class ChartComponent implements OnInit {
       }]
     });
     chart.render();
+    this.loading = false;
   }
 }

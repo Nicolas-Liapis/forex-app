@@ -47,6 +47,11 @@
         &.convert-menu {
             padding: .8em;
             bottom: .35em;
+
+            @media screen and (max-width: 450px) {
+                bottom: 0;  
+                border-radius: 0;
+            }
     
             &:enabled {
                 background-color: #fcb813;
@@ -55,7 +60,7 @@
 
         &.change-menu {
             padding: .8em;
-            bottom: .35em;           
+            bottom: .35em;       
         }
         
         @media screen and (max-width: 450px) {
@@ -66,9 +71,32 @@
 
 .result {
     width: 100%;
+    min-height: 4em;
     background-color: rgba(0, 34, 114, 0.40);
-    border-radius: 5px;
-    padding: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 400;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    app-chart {
+        width: 100%;
+        height: auto;
+    }
+
+    @media screen and (max-width: 450px) {
+        width: auto;
+    }
+}
+
+.chart {
+    width: 100%;
+    background-color: white;
     text-align: center;
     font-size: 3em;
     font-weight: 400;
