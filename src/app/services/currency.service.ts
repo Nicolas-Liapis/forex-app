@@ -26,7 +26,7 @@ export class CurrencyService {
         }
       });
     }
-      return this.currencies;
+    return this.currencies;
   }
 
   getFx(from: string, to: string): Observable < any > {
