@@ -13,6 +13,7 @@ import { ChartService } from './services/chart.service';
 import { ChartComponent } from './tabs/forex/chart/chart.component';
 import { TopNavComponent } from './tabs/top-nav/top-nav.component';
 import { NotReadyComponent } from './tabs/not-ready/not-ready.component';
+import { RatesTableComponent } from './tabs/rates-table/rates-table.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotReadyComponent } from './tabs/not-ready/not-ready.component';
     ForexComponent,
     ChartComponent,
     TopNavComponent,
-    NotReadyComponent
+    NotReadyComponent,
+    RatesTableComponent
   ],
   imports: [
     BrowserModule,

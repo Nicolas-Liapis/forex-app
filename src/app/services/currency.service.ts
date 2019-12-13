@@ -7,21 +7,26 @@ import { publishReplay, refCount } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CurrencyService {
-  currencies: any;
+  currencies:any = [];
   res;
   private key = '74GF58GZ5KTOOD1Q';
   constructor(private http: HttpClient) {}
 
   getCurrencies(): Observable < any > {
     // caching currency list
-    if (!this.currencies) {
+    if (this.currencies.length === 0) {
       const currenciesUrl = 'https://openexchangerates.org/api/currencies.json';
-      this.currencies = this.http.get < any > (currenciesUrl).pipe(
+      const currencyList = this.http.get < any > (currenciesUrl).pipe(
         publishReplay(1),
         refCount()
       );
+      currencyList.subscribe(data => {
+        for (let i in data) {
+          this.currencies.push([i, data[i]]);
+        }
+      });
     }
-    return this.currencies;
+      return this.currencies;
   }
 
   getFx(from: string, to: string): Observable < any > {

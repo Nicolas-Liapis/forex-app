@@ -33,14 +33,7 @@ export class ForexComponent implements OnInit {
   }
 
   getCurrencies() {
-    const allCurrencies = this.currencyService.getCurrencies();
-    let currencies = {};
-    allCurrencies.subscribe(data => {
-      currencies = data;
-      for (const i in currencies) {
-        this.currencies.push([i, currencies[i]]);
-      }
-    });
+    this.currencies = this.currencyService.getCurrencies();
   }
 
   convert() {
