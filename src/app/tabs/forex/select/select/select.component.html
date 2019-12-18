@@ -1,0 +1,10 @@
+<mat-form-field class="select-menu" appearance="outline">
+        <input #currencyChoice type="text" placeholder="Search for currency" aria-label="text" matInput
+        [formControl]="formControl" [matAutocomplete]="auto" (focus)="getCurrencies($event)">
+      <mat-hint>e.g. type USD or United States</mat-hint>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option (click)="onCurrency(currencyChoice.value)" *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+</mat-form-field>

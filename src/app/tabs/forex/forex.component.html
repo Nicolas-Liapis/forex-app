@@ -4,30 +4,15 @@
         <mat-form-field class="select-menu" appearance="outline">
             <mat-label>Amount</mat-label>
             <input #amount matInput class="" (blur)="validateAmount(amount.value)" id="amountInput" type="number" formControlName="amount" />
-          </mat-form-field>
-      <mat-form-field class="select-menu" appearance="outline">
-          <mat-label>From</mat-label>
-      <select matNativeControl id="fromInput" formControlName="fromCurrency">
-          <option [ngValue]="null">Select Currency</option>
-          <option *ngFor="let currency of currencies">
-              {{currency}}
-            </option>
-      </select>
-      </mat-form-field>
+        </mat-form-field>
+      <app-select [(currency)]="from"></app-select>
       <button class="change-menu" mat-button (click)="change()"> 
           <mat-icon aria-hidden="false" aria-label="chevron-right"> <i class="fas fa-exchange-alt"></i> </mat-icon>
       </button> 
-      <mat-form-field class="select-menu" appearance="outline">
-          <mat-label>To</mat-label>
-          <select matNativeControl id="toInput" formControlName="toCurrency">
-              <option [ngValue]="null">Select Currency</option>
-              <option *ngFor="let currency of currencies">
-                  {{currency}}
-                </option>
-          </select>
-      </mat-form-field>     
-      <button class="convert-menu" mat-stroked-button [disabled]="!forexForm.valid" (click)="convert()"> 
+      <app-select [(currency)]="to"></app-select>
+      <button class="convert-menu" mat-stroked-button [disabled]="!(from && to) || wait" (click)="convert()"> 
           <mat-icon aria-hidden="false" aria-label="chevron-right"> <i class="fas fa-chevron-right"></i> </mat-icon>    
+          <mat-progress-bar *ngIf="wait" mode="buffer" [value]="progressValue"></mat-progress-bar>
       </button>
     </form>
   </div>
@@ -36,6 +21,6 @@
     <span *ngIf="resultMsg">{{resultMsg}}</span>
   </div>
   <div *ngIf="resultMsg" class="chart">
-    <app-chart *ngIf="reload" [from]="from" [to]="to"></app-chart>
+    <app-chart *ngIf="reload" [from]="cleanFrom" [to]="cleanTo"></app-chart>
   </div>
 </div>

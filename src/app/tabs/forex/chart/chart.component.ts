@@ -14,6 +14,7 @@ export class ChartComponent implements OnInit {
 
   datapoints = [];
   loading: boolean;
+  errormsg: string;
 
   constructor(private chartService: ChartService) { }
 
@@ -27,8 +28,12 @@ export class ChartComponent implements OnInit {
     const yAxis = [];
     const dataArr = [];
     this.datapoints = [];
-    let x = this.chartService.getDataMonth(this.from, this.to).subscribe(data => {
-      x = data['Time Series FX (Monthly)'];
+    let x = this.chartService.getDataMonth(this.from, this.to).subscribe(
+      res => {
+        if(res['Error Message']) {
+          this.errormsg = 'Chart not available';
+        }
+      x = res['Time Series FX (Monthly)'];
       for (const i in x) {
         dataArr.push([i, x[i]]);
       }

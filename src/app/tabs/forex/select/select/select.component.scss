@@ -1,0 +1,8 @@
+.select-menu {
+    margin-right: 1em;
+    margin-left: 1em;
+
+    @media screen and (max-width: 450px) {
+        margin: 0;
+      }
+}

@@ -13,7 +13,7 @@ import { ChartService } from './services/chart.service';
 import { ChartComponent } from './tabs/forex/chart/chart.component';
 import { TopNavComponent } from './tabs/top-nav/top-nav.component';
 import { NotReadyComponent } from './tabs/not-ready/not-ready.component';
-import { RatesTableComponent } from './tabs/rates-table/rates-table.component';
+import { SelectComponent } from './tabs/forex/select/select/select.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { RatesTableComponent } from './tabs/rates-table/rates-table.component';
     ChartComponent,
     TopNavComponent,
     NotReadyComponent,
-    RatesTableComponent
+    SelectComponent
   ],
   imports: [
     BrowserModule,
