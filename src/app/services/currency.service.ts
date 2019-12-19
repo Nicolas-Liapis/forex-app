@@ -35,4 +35,9 @@ export class CurrencyService {
     return this.http.get < any > (apiUrl);
   }
 
+  getRealTimeFx(from: string, to: string): Observable < any > {
+    const apiUrl = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${from}&to_currency=${to}&apikey=${this.key}`;
+    return this.http.get < any > (apiUrl);
+  }
+
 }

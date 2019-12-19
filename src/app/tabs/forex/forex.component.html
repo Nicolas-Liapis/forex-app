@@ -1,4 +1,4 @@
-<div class="tab">
+<mat-card class="tab">
   <div class="main-tab">
     <form novalidate [formGroup]="forexForm">
         <mat-form-field class="select-menu" appearance="outline">
@@ -20,7 +20,8 @@
     <mat-spinner *ngIf="loading"></mat-spinner>
     <span *ngIf="resultMsg">{{resultMsg}}</span>
   </div>
+</mat-card>
   <div *ngIf="resultMsg" class="chart">
     <app-chart *ngIf="reload" [from]="cleanFrom" [to]="cleanTo"></app-chart>
   </div>
-</div>
+

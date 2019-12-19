@@ -2,8 +2,7 @@
     width: 90%;
     margin: auto;
     margin-top: 3em;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -11,6 +10,9 @@
     align-content: center;
     background-color: rgba(0, 34, 114, 0.20);
     padding-top: 1.4em;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
 
     @media screen and (max-width: 450px) {
         align-content: stretch;
@@ -55,7 +57,6 @@
 
             @media screen and (max-width: 450px) {
                 bottom: 0;  
-                border-radius: 0;
             }
     
             &:enabled {
@@ -83,6 +84,9 @@
     text-align: center;
     font-size: 2em;
     font-weight: 400;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 3px solid black;
     color: white;
     display: flex;
     flex-direction: column;

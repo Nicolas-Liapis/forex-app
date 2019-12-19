@@ -14,6 +14,7 @@ import { ChartComponent } from './tabs/forex/chart/chart.component';
 import { TopNavComponent } from './tabs/top-nav/top-nav.component';
 import { NotReadyComponent } from './tabs/not-ready/not-ready.component';
 import { SelectComponent } from './tabs/forex/select/select/select.component';
+import { LiveDashboardComponent } from './tabs/live-dashboard/live-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SelectComponent } from './tabs/forex/select/select/select.component';
     ChartComponent,
     TopNavComponent,
     NotReadyComponent,
-    SelectComponent
+    SelectComponent,
+    LiveDashboardComponent
   ],
   imports: [
     BrowserModule,

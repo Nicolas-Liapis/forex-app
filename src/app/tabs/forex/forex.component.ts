@@ -48,7 +48,7 @@ export class ForexComponent implements OnInit {
     this.currencyService.getFx(this.cleanFrom, this.cleanTo).pipe(catchError(err => of([])))
       .subscribe(
         res => {
-          if(res['Error Message']) {
+          if (res['Error Message']) {
             this.resultMsg = 'Invalid currencies';
             this.loading = false;
           }
