@@ -59,6 +59,9 @@ export class ChartComponent implements OnInit {
       title: {
         text: `${from} to ${to} Chart`
       },
+      axisY: {
+        includeZero: false
+      },
       data: [{
         type: 'line',
         dataPoints: this.datapoints
