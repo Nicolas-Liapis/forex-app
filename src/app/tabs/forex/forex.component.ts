@@ -20,12 +20,14 @@ export class ForexComponent implements OnInit {
   to: string;
   cleanFrom: string;
   cleanTo: string;
+  currencyList: any;
   wait = false;
 
   constructor(private currencyService: CurrencyService,
               private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.currencyList = this.currencyService.getCurrencies();
     this.forexForm = this.fb.group({
       amount: ['1', [Validators.required, Validators.minLength(1), Validators.min(0)]]
     });

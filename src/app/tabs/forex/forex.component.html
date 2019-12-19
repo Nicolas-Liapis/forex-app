@@ -5,11 +5,11 @@
             <mat-label>Amount</mat-label>
             <input #amount matInput class="" (blur)="validateAmount(amount.value)" id="amountInput" type="number" formControlName="amount" />
         </mat-form-field>
-      <app-select [(currency)]="from"></app-select>
+      <app-select [currencyList]="currencyList" [(currency)]="from"></app-select>
       <button class="change-menu" mat-button (click)="change()"> 
           <mat-icon aria-hidden="false" aria-label="chevron-right"> <i class="fas fa-exchange-alt"></i> </mat-icon>
       </button> 
-      <app-select [(currency)]="to"></app-select>
+      <app-select [currencyList]="currencyList" [(currency)]="to"></app-select>
       <button class="convert-menu" mat-stroked-button [disabled]="!(from && to) || wait" (click)="convert()"> 
           <mat-icon aria-hidden="false" aria-label="chevron-right"> <i class="fas fa-chevron-right"></i> </mat-icon>    
           <mat-progress-bar *ngIf="wait" mode="buffer" [value]="progressValue"></mat-progress-bar>

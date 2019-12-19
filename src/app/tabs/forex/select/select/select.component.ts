@@ -9,15 +9,15 @@ import { startWith, map } from 'rxjs/operators';
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })
-export class SelectComponent implements OnInit, OnChanges {
+export class SelectComponent implements OnChanges {
 
   formControl = new FormControl();
   Options: any = [];
   filteredOptions: Observable<any>;
-  currencyList;
 
-  @Output() currencyChange = new EventEmitter<string>();
+  @Input() currencyList;
   @Input() currency;
+  @Output() currencyChange = new EventEmitter<string>();
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -27,11 +27,6 @@ export class SelectComponent implements OnInit, OnChanges {
       this.formControl.patchValue(this.currency);
     }
   }
-
-  ngOnInit() {
-    this.currencyList = this.currencyService.getCurrencies();
-  }
-
 
   onCurrency(currency: string) {
     this.currencyChange.emit(currency);
